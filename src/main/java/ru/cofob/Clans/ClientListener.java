@@ -33,63 +33,6 @@ public class ClientListener implements Listener {
     }
 
     @EventHandler
-    public void death(EntityDamageByEntityEvent e) {
-        String entity_clan;
-        if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
-            Player entity = (Player)e.getEntity();
-            entity = (Player)e.getDamager();
-            if (!clanConfiguration.isWorldSupported(entity.getWorld().getName())) {
-                return;
-            }
-
-            entity_clan = clanConfiguration.getClan(entity);
-            if (entity_clan != null && entity_clan != null && entity_clan.equals(entity_clan)) {
-                if (entity.equals(entity) && clanConfiguration.isSelfDamageEnabled()) {
-                    return;
-                }
-
-                e.setCancelled(true);
-                return;
-            }
-        }
-
-        ProjectileSource shooter;
-        if (e.getEntity() instanceof Player && e.getDamager() instanceof Projectile) {
-            shooter = ((Projectile)e.getDamager()).getShooter();
-            if (shooter != null && shooter instanceof Player) {
-                entity = (Player)e.getEntity();
-                Player damager = (Player)shooter;
-                if (!clanConfiguration.isWorldSupported(entity.getWorld().getName())) {
-                    return;
-                }
-
-                entity_clan = clanConfiguration.getClan(entity);
-                String damager_clan = clanConfiguration.getClan(damager);
-                if (entity_clan != null && damager_clan != null) {
-                    if (entity.equals(damager) && clanConfiguration.isSelfDamageEnabled()) {
-                        return;
-                    }
-
-                    if (entity_clan.equals(damager_clan)) {
-                        e.setCancelled(true);
-                        return;
-                    }
-                }
-            }
-        }
-
-        if (e.getDamager() instanceof Projectile) {
-            shooter = ((Projectile)e.getDamager()).getShooter();
-            if (shooter != null && shooter instanceof Player) {
-                this.lastKiller.put(e.getEntity(), (Player)shooter);
-                return;
-            }
-        }
-
-        this.lastKiller.put(e.getEntity(), e.getDamager());
-    }
-
-    @EventHandler
     public void death(PlayerDeathEvent e) {
         Entity entity = e.getEntity();
         if (clanConfiguration.isWorldSupported(entity.getWorld().getName())) {
