@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.cofob.Clans</groupId>
-    <artifactId>Clans</artifactId>
+    <artifactId>ClansFork</artifactId>
     <version>0.0.1</version>
 
     <properties>
