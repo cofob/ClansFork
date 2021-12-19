@@ -1,4 +1,7 @@
-[![](https://ci.cofob.ru/job/Clans/job/Plugin/job/Build/badge/icon?style=plastic)](https://ci.cofob.ru/job/Clans/job/Plugin/job/Build/lastBuild/)
 # ClansFork
 
-Clans fork without  broken friendly fire.
+[Clans](https://www.spigotmc.org/resources/clans-clan-system-1-7-1-16.22304/) fork without broken friendly fire.
+
+## Addons
+
+ - [Rename](https://git.sr.ht/~cofob/ClansForkRenameAddon)
