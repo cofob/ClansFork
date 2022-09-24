@@ -1,0 +1,12 @@
+pipeline:
+  build:
+    image: maven
+    commands:
+      - mvn install -B
+  pin-cluster:
+    image: cofob/ipfs-cluster-ctl
+    commands:
+      - ipfs-cluster-ctl --host /dns4/rat.frsqr.xyz/tcp/9094 --basic-auth default:$CLUSTER_SECRET add -r --expire-in 2160h --name clansfork-build-$(date +%s) -Q target/ > cid.txt
+      - cat cid.txt
+      - echo "https://ipfsqr.ru/ipfs/$(cat cid.txt)"
+    secrets: [CLUSTER_SECRET]
